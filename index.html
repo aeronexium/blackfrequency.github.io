@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSINT Aggregator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">OSINT<span class="accent">Aggregator</span></span>
+    </div>
+    <p class="tagline">Open-source intelligence · Free · Private</p>
+  </header>
+
+  <!-- ── Search Box ─────────────────────────────────────────────────────── -->
+  <main>
+    <section class="search-section">
+      <h1 class="search-title">Search for a target</h1>
+      <p class="search-subtitle">Enter a username, email address, or domain name</p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="e.g. johndoe · john@example.com · example.com"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="search-btn" class="search-btn">
+          <span id="btn-text">Search</span>
+          <span id="btn-spinner" class="spinner hidden"></span>
+        </button>
+      </div>
+
+      <!-- Quick-type hint badges -->
+      <div class="hint-badges">
+        <span class="badge" onclick="fillExample('torvalds')">👤 username</span>
+        <span class="badge" onclick="fillExample('test@example.com')">✉️ email</span>
+        <span class="badge" onclick="fillExample('github.com')">🌐 domain</span>
+      </div>
+    </section>
+
+    <!-- ── Error Banner ──────────────────────────────────────────────────── -->
+    <div id="error-banner" class="error-banner hidden">
+      <span id="error-text"></span>
+    </div>
+
+    <!-- ── Results Area ──────────────────────────────────────────────────── -->
+    <section id="results-section" class="results-section hidden">
+
+      <!-- Summary bar -->
+      <div class="summary-bar">
+        <div class="summary-query">
+          Query: <code id="summary-query-val"></code>
+          <span id="summary-type" class="type-badge"></span>
+        </div>
+        <div class="confidence-wrap">
+          <span class="conf-label">Confidence</span>
+          <div class="conf-bar-outer">
+            <div id="conf-bar" class="conf-bar"></div>
+          </div>
+          <span id="conf-pct" class="conf-pct">0%</span>
+        </div>
+        <button class="copy-btn" onclick="copyResults()" title="Copy JSON">⎘ Copy JSON</button>
+      </div>
+
+      <!-- Tab Navigation -->
+      <nav class="tab-nav" id="tab-nav">
+        <!-- Tabs are injected by JS based on which sources returned data -->
+      </nav>
+
+      <!-- Tab Panels -->
+      <div id="tab-panels">
+        <!-- Panels are injected by JS -->
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span>OSINT Aggregator · for educational &amp; legitimate research use only</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
